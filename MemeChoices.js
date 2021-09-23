@@ -3,24 +3,18 @@ import React from 'react';
 class MemeChoices extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
+        this.state = { memeObject : this.props.meme
         };
+       
     }
 
     render() {
-        // console.log(this.props.loading);
-        // if (this.props.loading) {
-        //     var background = {
-        //         backgroundImage: 'url(' + this.props.background.url + ')'
-        //     }
-        // }
-        //test ets
-        //console.log(this.props);
+        console.log("poop");
         return (
             <div>
                 {this.props.memeTitle}
                 <div className="meme" style={this.props.background} >
-
+         
                 </div>
             </div>
         )

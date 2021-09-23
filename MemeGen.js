@@ -17,7 +17,6 @@ class MemeGen extends React.Component {
         fetch("https://api.imgflip.com/get_memes")
             .then(response => response.json())
             .then(data => {
-                //console.log(data)
                 this.setState({
                     MasterMemeList: data.data.memes,
                     loading: false,
@@ -35,7 +34,7 @@ class MemeGen extends React.Component {
         // this.setState({ [name]: event.target.value });
     }
 
-    changeList = (num) => {
+    changeListNum = (num) => {
         if(this.state.listNumber>0 || num>0){
         this.setState((prevState, props) => ({
             listNumber: prevState.listNumber + num,
@@ -46,21 +45,22 @@ class MemeGen extends React.Component {
 
 
     render() {
-        console.log(this.state.MasterMemeList[this.state.listNumber])
+        //console.log(this.state.MasterMemeList[this.state.listNumber])
+
         if (this.state.MasterMemeList.length >= 1){
         var backgrounds = { backgroundImage: 'url(' + this.state.MasterMemeList[this.state.listNumber].url + ')' }
-
         var title = this.state.MasterMemeList[this.state.listNumber].name;
-        var meme = <MemeChoices background={backgrounds} listNumber={this.state.listNumber} memeTitle={title} />
+        var meme = <MemeChoices background={backgrounds} listNumber={this.state.listNumber} memeTitle={title} meme={this.state.MasterMemeList[this.state.listNumber]} />
     }
         return (
             <div>
                 <div className="container">
                     <div className="title">Meme Generator</div>
                 {meme}
-                <button onClick={()=>{this.changeList(-1)}}>&#8592;</button>
+
+                <button onClick={()=>{this.changeListNum(-1)}}>&#8592;</button>
                 {this.state.listNumber+1 + " / " + this.state.MasterMemeList.length}
-                <button onClick={()=>{this.changeList(1)}}>&#8594;</button>
+                <button onClick={()=>{this.changeListNum(1)}}>&#8594;</button>
                    
                 
                     <form onSubmit={this.mySubmitHandler}>
