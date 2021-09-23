@@ -20,7 +20,7 @@ class MemeChoices extends React.Component {
             <div>
                 {this.props.memeTitle}
                 <div className="meme" style={this.props.background} >
-                
+
                 </div>
             </div>
         )

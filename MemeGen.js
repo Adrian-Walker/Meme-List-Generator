@@ -49,6 +49,7 @@ class MemeGen extends React.Component {
         console.log(this.state.MasterMemeList[this.state.listNumber])
         if (this.state.MasterMemeList.length >= 1){
         var backgrounds = { backgroundImage: 'url(' + this.state.MasterMemeList[this.state.listNumber].url + ')' }
+
         var title = this.state.MasterMemeList[this.state.listNumber].name;
         var meme = <MemeChoices background={backgrounds} listNumber={this.state.listNumber} memeTitle={title} />
     }
