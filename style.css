@@ -1,0 +1,38 @@
+.meme{
+    width:300px;
+    height: 300px;
+    margin: 30px auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:contain;
+    border: 2px solid black;
+    font: 1000;
+    font-size: 40px;
+
+}
+
+button{
+    display: inline;
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 32px;
+    margin: 4px 2px;
+}
+
+.container{
+    width:60%;
+    margin:auto;
+    
+    align-items: center;
+    text-align: center;
+    
+}
+
+.title{
+    font-size: 40px;
+}
