@@ -1,26 +1,16 @@
 import React from "react";
-import { Component } from "react";
+import './style.css';
+import MemeGen from './MemeGen';
 
-class App extends Component {
-    constructor() {
-        super()
-        this.state = {
-            image: " "
-        }
-    }
-
-    render() {
-        return (
-            <div>
-                <form>
-                    <input placeholder="Top Text"></input>
-                    <input placeholder="Bottom Text"></input>
-                    <button>Submit</button>
-                </form>
-                <button>Refresh Meme Image</button>
-            </div>
-        )
-    }
+function App() {
+ 
+  return (
+    <div >
+      <MemeGen/>
+    </div>
+  )
 }
-
 export default App;
+
+
+
