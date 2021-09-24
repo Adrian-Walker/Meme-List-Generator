@@ -13,11 +13,12 @@ class MemeChoices extends React.Component {
             <div>
                 {this.props.memeTitle}
                 <div className="meme" style={this.props.background} >
-         
+
                 </div>
+                <input placeholder="meme"></input>
+                <input placeholder="generator"></input>
             </div>
         )
     }
 }
 export default MemeChoices;
-
