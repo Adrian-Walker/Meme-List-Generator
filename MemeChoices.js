@@ -9,7 +9,6 @@ class MemeChoices extends React.Component {
     }
 
     render() {
-        console.log("poop");
         return (
             <div>
                 {this.props.memeTitle}

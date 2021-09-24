@@ -35,18 +35,15 @@ class MemeGen extends React.Component {
     }
 
     changeListNum = (num) => {
-        if(this.state.listNumber>0 || num>0){
+        if(this.state.listNumber > 0 || num > 0){
         this.setState((prevState, props) => ({
             listNumber: prevState.listNumber + num,
         }));
     }
-       
-      }
-
+}
 
     render() {
         //console.log(this.state.MasterMemeList[this.state.listNumber])
-
         if (this.state.MasterMemeList.length >= 1){
         var backgrounds = { backgroundImage: 'url(' + this.state.MasterMemeList[this.state.listNumber].url + ')' }
         var title = this.state.MasterMemeList[this.state.listNumber].name;
@@ -57,11 +54,9 @@ class MemeGen extends React.Component {
                 <div className="container">
                     <div className="title">Meme Generator</div>
                 {meme}
-
                 <button onClick={()=>{this.changeListNum(-1)}}>&#8592;</button>
                 {this.state.listNumber+1 + " / " + this.state.MasterMemeList.length}
                 <button onClick={()=>{this.changeListNum(1)}}>&#8594;</button>
-                   
                 
                     <form onSubmit={this.mySubmitHandler}>
                         <input type='text' onChange={this.myChangeHandler} name="fName" placeholder="Top Text" />
