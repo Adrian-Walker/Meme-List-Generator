@@ -22,6 +22,7 @@ export default class DraggableInput extends Component {
     this.dragStartTop = top - offsetTop;
     this.dragStartX = clientX;
     this.dragStartY = clientY;
+
     //Activates startDragging.
     window.addEventListener('mousemove', this.startDragging, false);
     //Deactivates startDragging.
