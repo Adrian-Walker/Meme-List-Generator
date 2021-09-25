@@ -1,5 +1,6 @@
 import React from 'react';
 import MemeChoices from './MemeChoices';
+var meme;
 
 class MemeGen extends React.Component {
     constructor(props) {
@@ -26,7 +27,7 @@ class MemeGen extends React.Component {
 
     mySubmitHandler = (event) => {
         event.preventDefault();
-        //console.log(this.state.listNumber);
+        console.log(meme);
     }
     myChangeHandler = (event) => {
         // console.log(event.target.value + event.target.name)
@@ -43,11 +44,11 @@ class MemeGen extends React.Component {
 }
 
     render() {
-        //console.log(this.state.MasterMemeList[this.state.listNumber])
+        console.log(this.state.MasterMemeList[this.state.listNumber])
         if (this.state.MasterMemeList.length >= 1){
         var backgrounds = { backgroundImage: 'url(' + this.state.MasterMemeList[this.state.listNumber].url + ')' }
         var title = this.state.MasterMemeList[this.state.listNumber].name;
-        var meme = <MemeChoices background={backgrounds} listNumber={this.state.listNumber} memeTitle={title} meme={this.state.MasterMemeList[this.state.listNumber]} />
+        meme = <MemeChoices background={backgrounds} listNumber={this.state.listNumber} memeTitle={title} meme={this.state.MasterMemeList[this.state.listNumber]} />
     }
         return (
             <div>
@@ -59,8 +60,7 @@ class MemeGen extends React.Component {
                 <button onClick={()=>{this.changeListNum(1)}}>&#8594;</button>
                 
                     <form onSubmit={this.mySubmitHandler}>
-                        <input type='text' onChange={this.myChangeHandler} name="fName" placeholder="Top Text" />
-                        <input type='text' onChange={this.myChangeHandler} name="lName" placeholder="Bottom Text" />
+                        
                         <input type='submit' />
                     </form>
                    
