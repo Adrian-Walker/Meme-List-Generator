@@ -26,7 +26,7 @@ class MemeGen extends React.Component {
             })
     }
 
-    mySubmitHandler = (event) => {
+    mySubmitHandler = (event) => { 
         event.preventDefault();
         console.log(meme);
     }
