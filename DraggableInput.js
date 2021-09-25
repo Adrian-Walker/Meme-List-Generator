@@ -10,6 +10,10 @@ export default class DraggableInput extends Component {
     setHandleRef = ref => {
         this.handleRef = ref;
       }
+
+    passXY =() =>{
+
+    }
       
       initializeDrag = event => {
         const {target, clientX, clientY} = event;
@@ -37,8 +41,7 @@ export default class DraggableInput extends Component {
 
     render() {
         return (
-            <div className="memeText" onMouseDown={this.initializeDrag} ref={this.setHandleRef} contentEditable="true">
-                
+            <div className="memeText" onMouseDown={this.initializeDrag} ref={this.setHandleRef} contentEditable="false">
                 Edit and Drag Me
             </div>
         )

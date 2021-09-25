@@ -11,8 +11,9 @@
 
 }
 .memeText{
-    font-size: 14px;
+    font-size: 20px;
     width:fit-content;
+    border:2px solid red;
 }
 
 button{

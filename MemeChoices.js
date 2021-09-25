@@ -13,7 +13,7 @@ class MemeChoices extends React.Component {
     render() {
         var dragComps=[];
         for(var i=0; i<this.props.meme.box_count;i++){
-            dragComps.push( <DraggableInput key={i}/>)
+            dragComps.push( <DraggableInput key={i} />)
         }
 
         return (
