@@ -13,6 +13,7 @@ class MemeGen extends React.Component {
         };
     }
 
+    //Picking up information from API. 
     componentDidMount() {
         this.setState({ loading: true })
         fetch("https://api.imgflip.com/get_memes")
@@ -58,18 +59,17 @@ class MemeGen extends React.Component {
                 <button onClick={()=>{this.changeListNum(-1)}}>&#8592;</button>
                 {this.state.listNumber+1 + " / " + this.state.MasterMemeList.length}
                 <button onClick={()=>{this.changeListNum(1)}}>&#8594;</button>
-                
+
                     <form onSubmit={this.mySubmitHandler}>
-                        
+
                         <input type='submit' />
                     </form>
-                   
+
                 </div>
-               
+
 
             </div>
         );
     }
 }
 export default MemeGen;
-

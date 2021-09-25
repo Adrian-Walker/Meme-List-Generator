@@ -10,10 +10,12 @@ class MemeChoices extends React.Component {
 
     }
 
+
     render() {
-        var dragComps=[];
-        for(var i=0; i<this.props.meme.box_count;i++){
-            dragComps.push( <DraggableInput key={i}/>)
+        var dragComps = [];
+        //Adds text boxes to the meme.
+        for (var i = 0; i < this.props.meme.box_count; i++) {
+            dragComps.push(<DraggableInput key={i} />)
         }
 
         return (
@@ -22,7 +24,7 @@ class MemeChoices extends React.Component {
                 {this.props.meme.name}
                 <div className="meme" style={this.props.background}  >
 
-                {dragComps}
+                    {dragComps}
                 </div>
 
 
