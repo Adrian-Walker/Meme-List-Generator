@@ -1,30 +1,29 @@
 import React from 'react';
-import DraggableInput from './DraggableInput';
+
 
 class MemeChoices extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            memeObject: this.props.meme
+            memeObject: this.props.meme,
+            inputs:this.props.inputs
         };
-
+        
     }
 
 
     render() {
-        var dragComps = [];
+        
+        var backgrounds = { backgroundImage: 'url(' + this.props.meme.url + ')' }
         //Adds text boxes to the meme.
-        for (var i = 0; i < this.props.meme.box_count; i++) {
-            dragComps.push(<DraggableInput key={i} />)
-        }
-
+       
         return (
-
             <div>
                 {this.props.meme.name}
-                <div className="meme" style={this.props.background}  >
-
-                    {dragComps}
+                <div className="meme" style={backgrounds}>
+                {this.state.inputs}
+                {/* {this.props.inputs} */}
+                    
                 </div>
 
 

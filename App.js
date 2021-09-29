@@ -1,12 +1,12 @@
 import React from "react";
 import './style.css';
-import MemeGen from './MemeGen';
+import MemeGen2 from './MemeGen2';
 
 function App() {
  
   return (
     <div >
-      <MemeGen/>
+      <MemeGen2/>
     </div>
   )
 }
