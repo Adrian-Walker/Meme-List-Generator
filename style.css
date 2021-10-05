@@ -1,7 +1,7 @@
 .meme{
     width:500px;
     height: 500px;
-    margin: 30px auto;
+    margin: 5px auto 20px auto;
     background-position: center;
     background-repeat: no-repeat;
     background-size:contain;
@@ -10,10 +10,52 @@
     font-size: 50px;
 
 }
+.memeText{
+    font-size: 20px;
+    width:fit-content;
+    border:2px solid red;
+}
 
 button{
     display: inline;
     background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 32px;
+    margin: 4px 2px;
+}
+input{
+    display: inline;
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 32px;
+    margin: 4px 2px;
+}
+button:hover{
+    display: inline;
+    background-color: #295f2b; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 32px;
+    margin: 4px 2px;
+}
+
+input:hover{
+    display: inline;
+    background-color: #295f2b; /* Green */
     border: none;
     color: white;
     padding: 15px 30px;

@@ -1,5 +1,7 @@
 import React from 'react';
 import MemeChoices from './MemeChoices';
+import SavedMemes from './SavedMemes';
+import DraggableInput from './DraggableInput';
 
 class MemeGen extends React.Component {
     constructor(props) {
@@ -9,9 +11,11 @@ class MemeGen extends React.Component {
             UserMemeList: [],
             listNumber: 0,
             loading: false,
+            dragComps:0
         };
     }
 
+    //Picking up information from API.
     componentDidMount() {
         this.setState({ loading: true })
         fetch("https://api.imgflip.com/get_memes")
@@ -24,10 +28,16 @@ class MemeGen extends React.Component {
             })
     }
 
-    mySubmitHandler = (event) => {
+   
+
+    mySubmitHandler = (event) => { 
         event.preventDefault();
-        //console.log(this.state.listNumber);
+         var memeHolder=this.state.UserMemeList.concat(this.state.MasterMemeList[this.state.listNumber])
+         
+        this.setState({UserMemeList:memeHolder})
+          
     }
+
     myChangeHandler = (event) => {
         // console.log(event.target.value + event.target.name)
         // var name = event.target.name;
@@ -35,41 +45,63 @@ class MemeGen extends React.Component {
     }
 
     changeListNum = (num) => {
-        if(this.state.listNumber > 0 || num > 0){
-        this.setState((prevState, props) => ({
-            listNumber: prevState.listNumber + num,
-        }));
+        if (this.state.listNumber > 0 || num > 0) {
+            this.setState((prevState, props) => ({
+                listNumber: prevState.listNumber + num,
+                
+            }));
+            this.setState({
+                dragComps:this.state.MasterMemeList[this.state.listNumber].box_count
+               
+            });
+            console.log(this.state.dragComps)
+        }
     }
-}
+
+    handleChangeValue = (childData) =>{
+        console.log(childData)
+    }
 
     render() {
+        
         //console.log(this.state.MasterMemeList[this.state.listNumber])
-        if (this.state.MasterMemeList.length >= 1){
-        var backgrounds = { backgroundImage: 'url(' + this.state.MasterMemeList[this.state.listNumber].url + ')' }
-        var title = this.state.MasterMemeList[this.state.listNumber].name;
-        var meme = <MemeChoices background={backgrounds} listNumber={this.state.listNumber} memeTitle={title} meme={this.state.MasterMemeList[this.state.listNumber]} />
-    }
+        //If MasterMemeList comes back undefined do not run.
+        if (this.state.MasterMemeList.length >= 1) {
+
+            // for (var i = 0; i < this.state.MasterMemeList[this.state.listNumber].box_count; i++) {
+            //     dragCompsHolder.push(<DraggableInput key={i} onChangeValue={this.handleChangeValue}/>)
+            // }
+           var meme = <MemeChoices meme={this.state.MasterMemeList[this.state.listNumber]} />
+        }
+        
+        
         return (
             <div>
                 <div className="container">
                     <div className="title">Meme Generator</div>
-                {meme}
-                <button onClick={()=>{this.changeListNum(-1)}}>&#8592;</button>
-                {this.state.listNumber+1 + " / " + this.state.MasterMemeList.length}
-                <button onClick={()=>{this.changeListNum(1)}}>&#8594;</button>
+                    {meme}
                 
+                    <button onClick={() => { this.changeListNum(-1) }}>&#8592;</button>
+                    {/*Adds 1 to the index */}
+                    {this.state.listNumber + 1 + " / " + this.state.MasterMemeList.length}
+                    <button onClick={() => { this.changeListNum(1) }}>&#8594;</button>
+
                     <form onSubmit={this.mySubmitHandler}>
-                        <input type='text' onChange={this.myChangeHandler} name="fName" placeholder="Top Text" />
-                        <input type='text' onChange={this.myChangeHandler} name="lName" placeholder="Bottom Text" />
                         <input type='submit' />
                     </form>
-                   
+
+                    {this.state.UserMemeList.map((memeFromList,index)=>{
+                        return(<div>
+                            {/* {memeFromList.name} */}
+                            <MemeChoices  meme={memeFromList}  />
+                        </div>)
+                    })}
+
                 </div>
-               
+
 
             </div>
         );
     }
 }
 export default MemeGen;
-
