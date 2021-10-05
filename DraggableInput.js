@@ -35,7 +35,7 @@ export default class DraggableInput extends Component {
   }
 
   //An event function thats called on mouse move. Adds the style to the component. Changes location.
-  startDragging = ({ clientX, clientY,event }) => {
+  startDragging = ({ clientX, clientY }) => {
     this.handleRef.style.transform = `translate(${this.dragStartLeft + clientX - this.dragStartX}px, ${this.dragStartTop + clientY - this.dragStartY}px)`;
   //   this.setState({ x: this.dragStartLeft + clientX - this.dragStartX, y: this.dragStartTop + clientY - this.dragStartY })
    }
@@ -51,6 +51,7 @@ export default class DraggableInput extends Component {
     // Here, we invoke the callback with the new value
     this.props.parentCallback(event.target.innerText);
     this.setState({text: event.target.innerText})
+    return event.target.innerText;
 }
   render() {
     return (

@@ -21,7 +21,6 @@ class MemeGen2 extends React.Component {
         fetch("https://api.imgflip.com/get_memes")
             .then(response => response.json())
             .then(data => {
-                
                 this.setState({
                     MasterMemeList: data.data.memes,
                     loading: false,
@@ -29,7 +28,7 @@ class MemeGen2 extends React.Component {
                 var holder = this.state.MasterMemeList.map(meme=>{
                     var inputholder=[];
                     for (var i = 0; i < meme.box_count; i++) {
-                        inputholder.push(<DraggableInput key={i} onChangeValue={this.handleChangeValue} />)
+                        inputholder.push(<DraggableInput key={i}  parentCallback = {this.handleCallback}  />)
                     }
                     meme.inputs=inputholder
                     return meme;
@@ -40,19 +39,16 @@ class MemeGen2 extends React.Component {
                 })
                 console.log(this.state.MasterMemeList);
                 this.changeData();
-
             })
-
     }
 
 
     changeData = () => {
-
         console.log("box count: " + this.state.MasterMemeList[this.state.listNumber].box_count)
         console.log("List number: " + this.state.listNumber)
         this.dragCompsHolder = [];
         for (var i = 0; i < this.state.MasterMemeList[this.state.listNumber].box_count; i++) {
-            this.dragCompsHolder.push(<DraggableInput key={i} onChangeValue={this.handleChangeValue} />)
+            this.dragCompsHolder.push(<DraggableInput key={i}  parentCallback = {this.handleCallback}  />)
         }
         this.setState({
             dragComps: this.dragCompsHolder
@@ -64,7 +60,7 @@ class MemeGen2 extends React.Component {
     mySubmitHandler = (event) => {
         event.preventDefault();
         var memeHolder = this.state.MasterMemeList[this.state.listNumber];
-        memeHolder.inputs = this.dragCompsHolder;
+        
         var memeListHolder = this.state.UserMemeList.concat(memeHolder)
         this.setState({ UserMemeList: memeListHolder })
         console.log(this.state.UserMemeList)
@@ -85,17 +81,20 @@ class MemeGen2 extends React.Component {
 
     handleCallback = (childData) =>{
         console.log(childData)
-        console.log(this)
+        return childData
     }
 
     render() {
 
         if (this.state.MasterMemeList.length >= 1) {
             var meme = this.state.MasterMemeList[this.state.listNumber].url
-            this.dragCompsHolder = [];
-            for (var i = 0; i < this.state.MasterMemeList[this.state.listNumber].box_count; i++) {
-                this.dragCompsHolder.push(<DraggableInput key={i} parentCallback = {this.handleCallback()}  />)
-            }
+            this.dragCompsHolder = this.state.MasterMemeList[this.state.listNumber].inputs
+            console.log(this.dragCompsHolder);
+            // for (var i = 0; i < this.state.MasterMemeList[this.state.listNumber].inputs; i++) {
+            //     this.dragCompsHolder.push(<DraggableInput key={i} parentCallback = {this.handleCallback}  />)
+            // }
+            
+
         }
 
         var backgrounds = { backgroundImage: 'url(' + meme + ')' }
